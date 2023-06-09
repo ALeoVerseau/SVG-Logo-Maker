@@ -8,10 +8,10 @@ class SVG {
         this.text=""
     }
     render() {
-        return `<svg xmlns="http://www.w3.org/2000/svg version="1.1" width="300" height="200">${this.shape} ${this.text} </svg>` 
+        return `<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">${this.shape} ${this.text} </svg>` 
     }
     setText(text, textColor) {
-        this.text= `<text x="150 y="115" font-size="60" text-anchor="middle" fill="${textColor}"> ${text} </text>`
+        this.text= `<text x="150" y="115" font-size="60" text-anchor="middle" fill="${textColor}"> ${text} </text>`
     }
     setShape(shape) {
         this.shape= shape.render()
@@ -19,7 +19,7 @@ class SVG {
 }
 
 // questions for SVG maker
-inquirer.promt([
+inquirer.prompt([
     {
         type:"input",
         name:"text",
@@ -64,7 +64,7 @@ inquirer.promt([
     const newSVG = new SVG()
     newSVG.setShape(shape)
     newSVG.setText(text, textColor)
-    return fs.writeFileSync("logo.svg", svg.render())
+    return fs.writeFileSync("logo.svg", newSVG.render())
 })
 
 
